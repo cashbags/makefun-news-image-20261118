@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The World, Today — Wednesday 18 November 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #8a8578; }
+  /* The page is exactly 1024 x 1024: a newspaper front page for one day. */
+  .page {
+    width: 1024px; height: 1024px;
+    background: #fdfbf3; color: #141414;
+    font-family: "DejaVu Serif", Georgia, "Times New Roman", serif;
+    padding: 20px 36px 14px 36px;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  /* ---- Masthead: the day itself is the biggest fact on the page. ---- */
+  .masthead { text-align: center; border-bottom: 5px solid #141414; padding-bottom: 9px; }
+  .masthead .kicker {
+    font-family: "DejaVu Sans", Arial, sans-serif;
+    font-size: 17px; font-weight: bold; letter-spacing: 6px; color: #b91c1c;
+  }
+  .masthead h1 { font-size: 56px; line-height: 1.02; letter-spacing: 1px; font-weight: bold; }
+  .masthead .date {
+    font-family: "DejaVu Sans", Arial, sans-serif;
+    font-size: 28px; font-weight: bold; letter-spacing: 4px; margin-top: 4px;
+  }
+  .masthead .dateline {
+    font-family: "DejaVu Sans", Arial, sans-serif;
+    font-size: 15px; letter-spacing: 2px; color: #444; margin-top: 5px;
+  }
+  /* ---- Lead story: the bridge war, day two of the fallout. ---- */
+  .lead {
+    display: flex; gap: 24px; padding: 12px 0 10px 0;
+    border-bottom: 2px solid #141414;
+  }
+  .lead .art { flex: 0 0 380px; }
+  .lead .words { flex: 1; }
+  .tag {
+    font-family: "DejaVu Sans", Arial, sans-serif;
+    font-size: 15px; font-weight: bold; letter-spacing: 3px; color: #b91c1c;
+  }
+  .lead h2 { font-size: 38px; line-height: 1.05; font-weight: bold; margin: 5px 0 7px 0; }
+  .lead p { font-size: 19px; line-height: 1.3; }
+  .lead p b { font-weight: bold; }
+  /* ---- Two-column rows of stories. ---- */
+  .row { display: flex; gap: 28px; padding: 9px 0; border-bottom: 2px solid #141414; }
+  .story { flex: 1; display: flex; gap: 14px; }
+  .story .art { flex: 0 0 140px; }
+  .story h3 { font-size: 24px; line-height: 1.08; font-weight: bold; margin: 3px 0 5px 0; }
+  .story p { font-size: 16px; line-height: 1.3; }
+  .row.lower { border-bottom: 2px solid #141414; }
+  /* ---- Bottom strip: the sixth story + source line. ---- */
+  .strip {
+    padding: 10px 0 8px 0; border-bottom: 5px solid #141414;
+    font-size: 20px; line-height: 1.28;
+  }
+  .strip .tag { font-size: 16px; }
+  .footer {
+    margin-top: auto; padding-top: 10px;
+    font-family: "DejaVu Sans", Arial, sans-serif;
+    font-size: 14px; letter-spacing: 1px; color: #555; text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">WEDNESDAY&rsquo;S WORLD &nbsp;&middot;&nbsp; ONE DAY IN FULL</div>
+    <h1>The World, Today</h1>
+    <div class="date">WEDNESDAY&nbsp;&middot;&nbsp;18 NOVEMBER 2026</div>
+    <div class="dateline">SIX STORIES &nbsp;&middot;&nbsp; EUROPE &middot; THE GULF &middot; ASIA &middot; AMERICA &middot; HEALTH</div>
+  </header>
+
+  <!-- LEAD: the bridge war — the Kerch arch is down, Kyiv's bridges are shut. -->
+  <section class="lead">
+    <div class="art">
+      <svg width="380" height="228" viewBox="0 0 400 252" role="img" aria-label="A bridge with its middle arch fallen into the strait below">
+        <rect x="0" y="0" width="400" height="252" fill="#dcebf5"/>
+        <circle cx="52" cy="44" r="24" fill="#f0a832"/>
+        <circle cx="52" cy="44" r="34" fill="#f0a832" opacity="0.25"/>
+        <!-- the strait -->
+        <path d="M0 206 Q 50 192 100 206 T 200 206 T 300 206 T 400 206 L 400 252 L 0 252 Z" fill="#6f9dbd"/>
+        <path d="M0 220 Q 50 208 100 220 T 200 220 T 300 220 T 400 220 L 400 252 L 0 252 Z" fill="#4f7fa3"/>
+        <text x="150" y="242" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="3" fill="#dcebf5">KERCH STRAIT</text>
+        <!-- deck, left and right of the gap -->
+        <rect x="10" y="116" width="148" height="12" fill="#333333"/>
+        <rect x="242" y="116" width="148" height="12" fill="#333333"/>
+        <!-- fallen arch, tilted down into the water -->
+        <g transform="rotate(27 200 148)">
+          <rect x="160" y="138" width="82" height="12" fill="#333333"/>
+        </g>
+        <!-- arches: two standing, the middle one broken -->
+        <path d="M30 116 Q 84 50 138 116" fill="none" stroke="#9c2b2b" stroke-width="9"/>
+        <path d="M262 116 Q 316 50 370 116" fill="none" stroke="#9c2b2b" stroke-width="9"/>
+        <path d="M160 116 Q 200 72 200 116" fill="none" stroke="#9c2b2b" stroke-width="9" stroke-dasharray="13 10"/>
+        <!-- piers -->
+        <rect x="22" y="128" width="12" height="80" fill="#5f5f5f"/>
+        <rect x="146" y="128" width="12" height="80" fill="#5f5f5f"/>
+        <rect x="242" y="128" width="12" height="80" fill="#5f5f5f"/>
+        <rect x="366" y="128" width="12" height="80" fill="#5f5f5f"/>
+        <!-- smoke rising from the gap -->
+        <circle cx="198" cy="94" r="15" fill="#8f8f8f" opacity="0.85"/>
+        <circle cx="216" cy="74" r="19" fill="#ababab" opacity="0.8"/>
+        <circle cx="240" cy="56" r="13" fill="#c6c6c6" opacity="0.8"/>
+        <!-- a truck stopped at the edge of the gap -->
+        <rect x="98" y="98" width="38" height="16" rx="3" fill="#9c2b2b"/>
+        <rect x="108" y="88" width="18" height="10" fill="#9c2b2b"/>
+        <circle cx="106" cy="116" r="5" fill="#141414"/><circle cx="126" cy="116" r="5" fill="#141414"/>
+      </svg>
+    </div>
+    <div class="words">
+      <div class="tag">UKRAINE &middot; THE BRIDGE WAR</div>
+      <h2>Kerch arch falls into the sea as Kyiv&rsquo;s bridges are hit</h2>
+      <p>Ukraine strikes the road-and-rail link to Crimea <b>a second straight day</b>; the road arch collapses into the strait and traffic halts, rail back on one track. Hours earlier, Russian missiles hit <b>two of Kyiv&rsquo;s main bridges</b> over the Dnipro, closing both.</p>
+    </div>
+  </section>
+
+  <!-- ROW 2: Bahrain drones / Trump in Asia. -->
+  <div class="row">
+    <article class="story">
+      <div class="art">
+        <svg width="140" height="140" viewBox="0 0 148 148" role="img" aria-label="Drones flying at a radar dish over Bahrain">
+          <rect x="0" y="0" width="148" height="148" fill="#e6e2d4"/>
+          <circle cx="74" cy="74" r="62" fill="none" stroke="#b9b09a" stroke-width="2" stroke-dasharray="4 6"/>
+          <circle cx="74" cy="74" r="44" fill="none" stroke="#b9b09a" stroke-width="2" stroke-dasharray="4 6"/>
+          <!-- radar dish -->
+          <path d="M44 108 A 44 44 0 0 1 104 108 Z" fill="#8a8578"/>
+          <rect x="70" y="106" width="8" height="26" fill="#5f5f5f"/>
+          <rect x="52" y="130" width="44" height="8" fill="#5f5f5f"/>
+          <line x1="74" y1="96" x2="108" y2="58" stroke="#b91c1c" stroke-width="3"/>
+          <!-- drones -->
+          <g fill="#2b2b2b">
+            <rect x="104" y="30" width="26" height="7" rx="3"/>
+            <rect x="112" y="24" width="10" height="6" rx="2"/>
+            <rect x="18" y="44" width="22" height="6" rx="3"/>
+            <rect x="25" y="39" width="8" height="5" rx="2"/>
+          </g>
+          <!-- interception burst -->
+          <path d="M118 66 L 126 58 L 122 70 L 132 68 L 124 76 L 132 82 L 120 80 L 120 90 L 114 80 L 104 84 L 110 74 L 100 70 L 112 66 Z" fill="#f0a832"/>
+        </svg>
+      </div>
+      <div>
+        <div class="tag">THE GULF &middot; BAHRAIN</div>
+        <h3>Iran&rsquo;s drones target US radar &mdash; again</h3>
+        <p>Tehran claims a hit on the radar at Isa Air Base, its third attack in five days. Bahrain and US Central Command say every drone was intercepted: no damage, no injuries.</p>
+      </div>
+    </article>
+    <article class="story">
+      <div class="art">
+        <svg width="140" height="140" viewBox="0 0 148 148" role="img" aria-label="A plane flying an arc from Manila toward Shenzhen, with three leaders' dots">
+          <rect x="0" y="0" width="148" height="148" fill="#e3ecf7"/>
+          <path d="M14 118 Q 74 40 134 92" fill="none" stroke="#b91c1c" stroke-width="4" stroke-dasharray="10 7"/>
+          <circle cx="14" cy="118" r="7" fill="#b91c1c"/>
+          <circle cx="134" cy="92" r="7" fill="#b91c1c"/>
+          <g transform="translate(66 58) rotate(-24)">
+            <path d="M0 0 L 34 0 L 8 -8 L 4 -4 L -8 -4 Z" fill="#2b2b2b"/>
+            <path d="M10 0 L 18 10 L 22 0 Z" fill="#2b2b2b"/>
+          </g>
+          <!-- three leaders meeting in Shenzhen -->
+          <circle cx="98" cy="30" r="7" fill="#3f6d4e"/>
+          <circle cx="114" cy="24" r="7" fill="#2b4a7a"/>
+          <circle cx="128" cy="34" r="7" fill="#8a6d2b"/>
+          <text x="8" y="140" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="bold" fill="#141414">MANILA</text>
+          <text x="76" y="140" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="bold" fill="#141414">SHENZHEN</text>
+          <text x="10" y="20" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="bold" fill="#3f6d4e">QUAD &middot; APEC</text>
+        </svg>
+      </div>
+      <div>
+        <div class="tag">ASIA &middot; MANILA TO SHENZHEN</div>
+        <h3>Trump in Manila; three leaders to meet</h3>
+        <p>The Quad meets for the first time in two years. Today Trump holds a state visit with Marcos, then flies on for Thursday&rsquo;s first-ever Trump&ndash;Xi&ndash;Putin meeting.</p>
+      </div>
+    </article>
+  </div>
+
+  <!-- ROW 3: Nvidia earnings / UK settlement sanctions. -->
+  <div class="row lower">
+    <article class="story">
+      <div class="art">
+        <svg width="140" height="140" viewBox="0 0 148 148" role="img" aria-label="A computer chip beside a rising bar chart">
+          <rect x="0" y="0" width="148" height="148" fill="#e8eef7"/>
+          <!-- chip -->
+          <rect x="14" y="34" width="56" height="56" fill="#2b4a7a"/>
+          <rect x="28" y="48" width="28" height="28" fill="#7fa8c9"/>
+          <text x="30" y="66" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="bold" fill="#141414">AI</text>
+          <g stroke="#2b4a7a" stroke-width="4">
+            <line x1="24" y1="34" x2="24" y2="22"/><line x1="38" y1="34" x2="38" y2="22"/><line x1="52" y1="34" x2="52" y2="22"/>
+            <line x1="24" y1="90" x2="24" y2="102"/><line x1="38" y1="90" x2="38" y2="102"/><line x1="52" y1="90" x2="52" y2="102"/>
+            <line x1="14" y1="48" x2="4" y2="48"/><line x1="14" y1="62" x2="4" y2="62"/><line x1="14" y1="76" x2="4" y2="76"/>
+          </g>
+          <!-- rising bars -->
+          <rect x="84" y="96" width="14" height="28" fill="#5b87ad"/>
+          <rect x="102" y="78" width="14" height="46" fill="#3f6d4e"/>
+          <rect x="120" y="56" width="14" height="68" fill="#b91c1c"/>
+          <path d="M84 92 L 109 74 L 127 52" fill="none" stroke="#141414" stroke-width="3"/>
+          <text x="12" y="126" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="bold" fill="#141414">+103% IN A YEAR</text>
+        </svg>
+      </div>
+      <div>
+        <div class="tag">BUSINESS &middot; CHIPS</div>
+        <h3>Nvidia sales double to $115.8bn a quarter</h3>
+        <p>Revenue up 103% on a year ago, beating forecasts, in the first report since founder Jensen Huang resigned. The board says it will not bring him back.</p>
+      </div>
+    </article>
+    <article class="story">
+      <div class="art">
+        <svg width="140" height="140" viewBox="0 0 148 148" role="img" aria-label="A document stamped SANCTIONED">
+          <rect x="0" y="0" width="148" height="148" fill="#f2ede2"/>
+          <rect x="24" y="14" width="100" height="120" fill="#fdfbf3" stroke="#8a8578" stroke-width="2"/>
+          <rect x="36" y="30" width="76" height="8" fill="#5f5f5f"/>
+          <rect x="36" y="46" width="76" height="6" fill="#9a9a9a"/>
+          <rect x="36" y="58" width="76" height="6" fill="#9a9a9a"/>
+          <rect x="36" y="70" width="56" height="6" fill="#9a9a9a"/>
+          <g transform="rotate(-14 74 102)">
+            <rect x="24" y="88" width="100" height="28" fill="none" stroke="#b91c1c" stroke-width="4"/>
+            <text x="30" y="107" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="bold" fill="#b91c1c">SANCTIONED</text>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <div class="tag">EUROPE &middot; WEST BANK</div>
+        <h3>Britain and 11 nations move on settlements</h3>
+        <p>London sanctions firms building in the West Bank as twelve countries pledge curbs on settlement trade. The US envoy warns of repercussions.</p>
+      </div>
+    </article>
+  </div>
+
+  <!-- BOTTOM STRIP: the sixth story. -->
+  <div class="strip">
+    <span class="tag">HEALTH &middot; MEASLES</span><br>
+    <b>US loses measles-elimination status after 26 years</b> &mdash; 5,400 cases in 2026, the most since 1991; Mexico and Bolivia lose the status too.
+  </div>
+
+  <div class="footer">AS REPORTED ON THE DAY BY REUTERS &middot; AP &middot; BBC &middot; AL JAZEERA &nbsp;&mdash;&nbsp; ONE DAY, SIX STORIES, 18 NOVEMBER 2026</div>
+</div>
+</body>
+</html>
