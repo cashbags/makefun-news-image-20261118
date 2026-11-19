@@ -20,19 +20,22 @@ read the masthead, the date, and every headline.
 ## Why these six stories
 
 The day's news was gathered from the daily briefs published for Wednesday 18
-November 2026 and then checked story by story against wire reporting
-(Reuters, AP, BBC, Al Jazeera). The six that made the page are the ones that
-recur across every brief of the day and that span the most ground:
+November 2026 and checked story by story against wire reporting (Reuters,
+AP, BBC, Al Jazeera). On 19 November, with the whole day over everywhere,
+all six were re-checked against the full day's reporting before this retry;
+the only change that re-check produced is the rail wording in story 1 (see
+"Re-verification, 19 November"). The six that made the page are the ones
+that recur across every brief of the day and that span the most ground:
 
 1. **The bridge war (lead).** Ukraine struck the Kerch Bridge — the
    road-and-rail link from Russia to occupied Crimea — for a second straight
-   day; the road arch collapsed into the strait, halting traffic, while rail
-   resumed on one track. Hours earlier, Russian missiles hit two of Kyiv's
-   main bridges over the Dnipro (the Northern and Southern), closing both
-   and disrupting water and heating in the capital. President Zelenskyy
-   called the strike an "unprecedented operation". This is the lead because
-   it is the day's most consequential event and because both sides' bridge
-   strikes belong in one story, not two.
+   day; the road arch collapsed into the strait, halting traffic. Hours
+   earlier, Russian missiles hit two of Kyiv's main bridges over the Dnipro
+   (the Northern and Southern), closing both and disrupting water and
+   heating in the capital. President Zelenskyy called the strike an
+   "unprecedented operation". This is the lead because it is the day's most
+   consequential event and because both sides' bridge strikes belong in one
+   story, not two.
 2. **Bahrain.** Iran's Revolutionary Guard said its drones targeted a US
    radar system at Isa Air Base in Bahrain — the third such attack in five
    days, after claims on Friday and Sunday. Bahrain said its air defences
@@ -69,7 +72,45 @@ recur across every brief of the day and that span the most ground:
 Stories that were considered and cut: Cyclone Akvan intensifying in the Bay
 of Bengal (a weather watch, not yet a landfall story); MS Dhoni retiring
 from the IPL (sport, one country); and the Canada–China trade extension
-(real, but folded into the APEC week the Asia story already covers).
+(real, but folded into the APEC week the Asia story already covers). The
+18 November Gulf picture also grew during the day — Iran claimed a drone
+attack on Ali Al-Salem Air Base in Kuwait, and the US struck a missile site
+on Qeshm Island on 17 November — but the Bahrain box already carries the
+Gulf beat, and the page has no room for a seventh story.
+
+## Re-verification, 19 November
+
+With the day complete, each story was checked again against the full day's
+reporting (19 November, before the retry capture):
+
+- **Kerch / Kyiv:** confirmed — 227-metre road arch span fell into the
+  strait, Zelenskyy called it "unprecedented", Kyiv's North and South
+  bridges hit by seven ballistic missiles, water and heating disrupted.
+  One fix: the first edition said rail was "back on one track". The
+  day's reporting disagrees on the rail — Russia's transport ministry was
+  quoted saying rail traffic was not interrupted, while other reports
+  describe limited service resuming. The page now says "rail traffic
+  reported running", which is the wording every account supports.
+- **Bahrain:** confirmed — IRGC said its drones targeted the US radar at
+  Isa Air Base; Bahrain and CENTCOM said intercepted, no damage, no
+  injuries. Counts differ between outlets (third vs fourth attack in the
+  sequence); the page keeps the hedged claim/counter-claim wording and
+  does not settle the count.
+- **Asia:** confirmed — Quad meets for the first time in two years, Trump
+  in Manila, Xi and Putin opened the APEC summit in Shenzhen ahead of his
+  arrival, trilateral set for Thursday.
+- **Nvidia:** confirmed in full — $115.8bn, +103%, beat of ~$109bn
+  expected, first report under interim CEO Colette Kress since Huang's
+  12 November resignation, board chair Harvey Jones ruling out
+  reinstatement, $130bn guided next quarter.
+- **Settlements:** confirmed — Britain sanctioned eight Israeli companies
+  building in the West Bank (plus Tzav 9), twelve countries pledging curbs
+  on settlement trade.
+- **Measles:** confirmed — PAHO withdrew elimination status from the US,
+  Mexico and Bolivia; US 5,412 confirmed cases as of 12 November, most
+  since 1991. The page keeps the rounded "5,400 cases", the figure the
+  briefs carried; a higher count (over 5,700) appears in one roundup and
+  is not used.
 
 ## What the page does not claim
 
@@ -85,9 +126,6 @@ from the IPL (sport, one country); and the Canada–China trade extension
   re-date themselves.
 - The trilateral meeting is dated Thursday, in the future relative to the
   page: "to meet", "set for Thursday", never "met".
-- The Kerch rail line is "back on one track", not "restored": Russia's
-  transport ministry said one track had resumed while work continued on
-  the second section.
 
 ## The layout, and why it is shaped this way
 
@@ -131,25 +169,20 @@ size, and no headline wraps past three lines.
 DejaVu Serif/Sans (the fonts the capture machine has). `scripts/capture.mjs`
 loads it in headless Chromium through playwright-core and screenshots the
 `.page` element at 1024×1024 as PNG. `main.ts` copies the resulting
-`entry.png` to `/output/entry.png` and verifies the PNG signature and the
-byte length, so a corrupt source fails at build time instead of at the
-gate. The image is 252,951 bytes — well under the 1 MiB cap — and the
-program is deterministic: two runs write byte-identical output (see
-`CHECK.md`).
+`entry.png` to `/output/entry.png` and verifies the PNG signature, the
+1 MiB cap, and the byte length, so a corrupt source fails at build time
+instead of at the gate. The program is deterministic: two runs write
+byte-identical output (see `CHECK.md`).
 
-## Revisions during the build
+## Revisions during this retry
 
-Two defects were caught by viewing the capture and fixed before the final
-image:
-
-1. **Clipped strip and footer.** The first capture ran the page long: the
-   story decks made both rows taller than their illustrations, so the
-   measles strip and the footer overflowed the 1024 px page and were cut
-   off. Fixed by tightening the type — lead headline 41 to 38 pt, story
-   headlines 26 to 24 pt, decks 17 to 16 pt — and re-captured: all six
-   stories and the footer are now in frame.
-2. **Overlapping labels in two illustrations.** The SANCTIONED stamp
-   covered the "12 NATIONS" label beneath it, and the "ISA AIR BASE" label
-   sat on the radar's base. Both labels were removed (the story text
-   already carries those facts) and the stamp was widened with smaller type
-   so the word fits inside its box; re-captured and re-viewed.
+The previous edition (submitted 18 November, rejected by the server on the
+run record, not on the image) was viewed again at full size and at 300 px
+before this rewrite: masthead, date, lead headline, all four story
+headlines, the measles strip and the footer were all present and legible,
+with no clipping and no overlapping labels. Two things changed in this
+retry: the design was re-authored in this session (CSS reorganised around
+shared variables, comments rewritten) and the rail wording was tightened
+after the 19 November re-verification (see above). The capture was then
+re-run from the rewritten page and viewed again at both sizes; see
+`CHECK.md` for the numbers.
