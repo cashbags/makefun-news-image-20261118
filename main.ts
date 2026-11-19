@@ -1,55 +1,76 @@
-// main.ts — "The World, Today", a news-image entry (Node 22, stdlib only).
+// main.ts — "The World, Today", a news-image entry for make.fun.
 //
-// The entry is a single image: entry.png beside this file, a newspaper
-// front page drawn for Wednesday 18 November 2026 and captured in a real
-// browser (see design.html and scripts/capture.mjs). This program does one
-// thing: hand that image to the grader by copying it to /output/entry.png,
-// byte for byte, and proving the copy landed whole.
+// The entry is one picture: entry.png, a newspaper front page drawn for
+// Wednesday 18 November 2026 and captured in a real headless browser from
+// design.html (see scripts/capture.mjs). This program is the handoff, not
+// the drawing: it carries that picture to the grader's output file, byte
+// for byte, and refuses to finish if anything about the handoff is wrong.
 //
-// The copy is deterministic by construction. There is no clock, no random
-// number, no network and no re-encoding anywhere in this file, so running
-// it twice writes the same bytes twice. If the source is not a PNG at all,
-// or the copy comes up short, the run fails loudly instead of handing the
-// grader a broken file.
+// Why a copy instead of a render: the grader runs the program twice and
+// demands the same bytes both times, with no network. A copy of a fixed
+// file is deterministic by construction — no clock, no randomness, no
+// re-encoding, no font rendering anywhere in this file — so the two runs
+// cannot disagree. The checks below exist so a damaged entry.png fails
+// here, loudly, instead of reaching the judge as a broken image.
 //
-// Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
+// Run it outside the grader's container with:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
 import { copyFileSync, mkdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-// A PNG always opens with these eight bytes; anything else is not our image.
-const PNG_MAGIC = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+// Every PNG opens with these eight bytes. Anything else is not our image.
+const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+
+// The competition caps the image at 1 MiB and at 1024 by 1024 pixels;
+// refuse an out-of-limits source here rather than letting the gate
+// refuse the whole entry.
+const MAX_IMAGE_BYTES = 1048576;
+const MAX_DIMENSION = 1024;
+
+// The IHDR chunk holds the image size: 4 bytes width, 4 bytes height,
+// starting 16 bytes into the file (8 signature + 4 length + 4 "IHDR").
+function readDimensions(bytes: Buffer): { width: number; height: number } {
+  if (bytes.length < 24 || bytes.toString('ascii', 12, 16) !== 'IHDR') {
+    fail('entry.png has no IHDR chunk where a PNG must — not a valid PNG');
+  }
+  return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+}
 
 function fail(message: string): never {
   throw new Error('main.ts: ' + message);
 }
 
-function copyEntry(): void {
+function handOver(): void {
   const here = fileURLToPath(new URL('.', import.meta.url));
   const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
   const source = join(here, 'entry.png');
   const target = join(outDir, 'entry.png');
 
-  // Refuse a source that is not a PNG before copying anything: a corrupt
-  // entry.png would otherwise sail through and fail at the grader instead.
-  const head = readFileSync(source).subarray(0, PNG_MAGIC.length);
-  if (!head.equals(PNG_MAGIC)) {
+  // Read the source once and check it before copying anything.
+  const bytes = readFileSync(source);
+  if (!bytes.subarray(0, PNG_SIGNATURE.length).equals(PNG_SIGNATURE)) {
     fail('entry.png does not start with the PNG signature — not a PNG');
+  }
+  if (bytes.length > MAX_IMAGE_BYTES) {
+    fail(`entry.png is ${bytes.length} bytes, over the 1 MiB cap`);
+  }
+  const { width, height } = readDimensions(bytes);
+  if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+    fail(`entry.png is ${width}x${height}, over the 1024x1024 cap`);
   }
 
   mkdirSync(outDir, { recursive: true });
   copyFileSync(source, target);
 
-  // Prove the copy is whole: a partial write would hand the judge a broken
-  // image, so the run refuses to finish silently when the sizes disagree.
-  const sourceBytes = statSync(source).size;
-  const targetBytes = statSync(target).size;
-  if (targetBytes !== sourceBytes) {
-    fail(`entry.png copy is short: wrote ${targetBytes} of ${sourceBytes} bytes`);
+  // Prove the copy landed whole: a short write would hand the judge a
+  // truncated file, so the run fails instead of finishing silently.
+  const written = statSync(target).size;
+  if (written !== bytes.length) {
+    fail(`entry.png copy is short: wrote ${written} of ${bytes.length} bytes`);
   }
-  console.log(`wrote ${target} (${targetBytes} bytes)`);
+  console.log(`wrote ${target} (${written} bytes)`);
 }
 
-copyEntry();
+handOver();
